@@ -1,7 +1,9 @@
 public class SpaceGame {
-public static String shipname;
+    public static String shipname;
     public static String health;
     public static String speed;
+
+
     public SpaceGame(String name, String health, String speed){
         this.shipname = name;
         this.health = health;

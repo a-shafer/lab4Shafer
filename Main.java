@@ -1,7 +1,5 @@
 import java.io.*;
 
-import java.util.*;
-
 public class Main {
     public static void main(String[] argv) {
 
@@ -30,6 +28,8 @@ public class Main {
         }
 
 
+        String serializedship = JsonSerializer.jsonSerializer(flatstring);
+        System.out.println(serializedship);
 
 
 
