@@ -4,6 +4,8 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -23,11 +25,17 @@ public class HttpServ {
     static class MyHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
-            String response = "Hello from Java HTTP Server";
+            try (BufferedReader reader = new BufferedReader(new FileReader("encryptedspacegame.txt"))) {
+            String line;
+            line = reader.readLine();
+                String response = String.valueOf(line);
+
+
             exchange.sendResponseHeaders(200, response.getBytes().length);
+
             OutputStream os = exchange.getResponseBody();
             os.write(response.getBytes());
             os.close();
-        }
+       }}
     }
 }
